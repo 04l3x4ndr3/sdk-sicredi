@@ -1,0 +1,22 @@
+{
+  "name": "04l3x4ndr3/sdk-sicredi",
+  "description": "Software Development Kit for integration with Sicredi System API",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "O4l3x4ndr3\\SdkSicredi\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Alexandre G R Alves",
+      "email": "alexandre@2plug.com.br"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "guzzlehttp/guzzle": "^7.5.0"
+  }
+}
