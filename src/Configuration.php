@@ -1,9 +1,10 @@
 <?php
 
-namespace O4l3x4ndr3\SdkSicred;
+namespace O4l3x4ndr3\SdkSicredi;
 
 class Configuration
 {
+
     /**
      *
      */
