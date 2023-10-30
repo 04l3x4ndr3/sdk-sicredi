@@ -166,6 +166,7 @@ class CallApi
 
         $this->options = $options;
         $res = $client->request($method, "{$this->config->getUrl()}{$endpoint}", $options);
+
         $data = $res->getBody()->getContents();
 
         return json_decode($data);
