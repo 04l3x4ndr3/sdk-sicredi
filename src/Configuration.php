@@ -40,9 +40,9 @@ class Configuration
 
         $this->keys = [
             'x-api-key' => $_SERVER['SICREDI_X_API_KEY'] ?? $apiKey,
-            'cooperativa' => $_SERVER['SICREDI_COOPERATIVA'] ?? $cooperativa,
-            'posto' => $_SERVER['SICREDI_POSTO'] ?? $posto,
-            'codigoBeneficiario' => $_SERVER['SICREDI_CODIGOBENEFICIARIO'] ?? $codigoBeneficiario
+            'cooperativa' => $_SERVER['SICREDI_COOPERATIVA'],
+            'posto' => $_SERVER['SICREDI_POSTO'],
+            'codigoBeneficiario' => $_SERVER['SICREDI_CODIGOBENEFICIARIO']
         ];
 
         $this->httpHeader = [];
