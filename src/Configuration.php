@@ -17,19 +17,34 @@ class Configuration
      * @var array|null
      */
     private ?array $httpHeader;
+    private ?array $keys;
 
     /**
      * @param string|null $apiKey
      * @param string|null $username
      * @param string|null $password
      */
-    public function __construct(?string $apiKey = NULL, ?string $username = NULL, ?string $password = NULL)
+    public function __construct
+    (
+        ?string $apiKey = NULL,
+        ?string $username = NULL,
+        ?string $password = NULL
+    )
     {
         $this->credentials = [
-            'x-api-key' => $_SERVER['SICREDI_X_API_KEY'] ?? $apiKey,
-            'username' => $_SERVER['SICREDI_USERNAME_HML'] ?? $username,
-            'password' => $_SERVER['SICREDI_PASSWORD_HML'] ?? $password
+            'grant_type' => 'password',
+            'username' => $_SERVER['SICREDI_USERNAME'] ?? $username,
+            'password' => $_SERVER['SICREDI_PASSWORD'] ?? $password,
+            'scope' => 'cobranca',
         ];
+
+        $this->keys = [
+            'x-api-key' => $_SERVER['SICREDI_X_API_KEY'] ?? $apiKey,
+            'cooperativa' => $_SERVER['SICREDI_COOPERATIVA'] ?? $cooperativa,
+            'posto' => $_SERVER['SICREDI_POSTO'] ?? $posto,
+            'codigoBeneficiario' => $_SERVER['SICREDI_CODIGOBENEFICIARIO'] ?? $codigoBeneficiario
+        ];
+
         $this->httpHeader = [];
     }
 
@@ -81,5 +96,16 @@ class Configuration
     public function getUrl(): string
     {
         return self::URL_PRODUCTION;
+    }
+
+    public function getKeys(): ?array
+    {
+        return $this->keys;
+    }
+
+    public function setKeys(?array $keys): Configuration
+    {
+        $this->keys = $keys;
+        return $this;
     }
 }
