@@ -40,7 +40,7 @@ class CallApi
             ],
             'form_params' => $this->config->getCredentials()
         ];
-        $res = $client->request('POST', $this->config->getUrl() . '/sb/auth/openapi/token', $options);
+        $res = $client->request('POST', $this->config->getUrl() . '/auth/openapi/token', $options);
         return json_decode($res->getBody()->getContents());
     }
 
