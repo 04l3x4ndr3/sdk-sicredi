@@ -401,12 +401,12 @@ class RegistraBoleto  extends CallApi
 
     public function registraBoleto()
     {
-        return $this->call("/sb/cobranca/boleto/v1/boletos", $this->to_array());
+        return $this->call("/cobranca/boleto/v1/boletos", $this->to_array());
     }
 
     public function imprimeBoleto(string $linhaDigitavel)
     {
-        return $this->call("/sb/cobranca/boleto/v1/boletos/pdf?linhaDigitavel={$linhaDigitavel}", null, 'GET');
+        return $this->call("/cobranca/boleto/v1/boletos/pdf?linhaDigitavel={$linhaDigitavel}", null, 'GET');
     }
 
     public function to_array(): array
