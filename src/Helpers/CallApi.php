@@ -8,12 +8,19 @@ use O4l3x4ndr3\SdkSicredi\Configuration;
 
 class CallApi
 {
+    /**
+     * @var Configuration
+     */
     private Configuration $config;
-    private ?array $header;
+    /**
+     * @var array|string[]|null
+     */
     private ?array $keys;
-    private array $options;
 
-    public function __construct(?Configuration $config = NULL)
+    /**
+     * @param Configuration|null $config
+     */
+    public function __construct(?Configuration $config = null)
     {
         $this->config = $config ?? new Configuration();
         $this->keys = $this->config->getKeys();
@@ -62,7 +69,7 @@ class CallApi
         } else {
             $options = array_filter([
                 'headers' => [
-                    'x-api-key' => '65a3ad4e-f73a-4a25-87db-55d3e04b1516',
+                    'x-api-key' => $this->keys['x-api-key'],
                     'Authorization' => "{$token->token_type} {$token->access_token}",
                 ]
             ]);
