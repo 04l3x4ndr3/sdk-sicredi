@@ -75,7 +75,12 @@ class CallApi
             ]);
         }
         $res = $client->request($method, "{$this->config->getUrl()}{$endpoint}", $options);
-        $res = json_decode($res->getBody()->getContents());
+
+        if (isset($body)) {
+            $res = json_decode($res->getBody()->getContents());
+        } else {
+            $res = $res->getBody()->getContents();
+        }
 
         return $res;
     }
