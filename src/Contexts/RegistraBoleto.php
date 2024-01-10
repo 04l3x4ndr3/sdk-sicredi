@@ -39,6 +39,7 @@ class RegistraBoleto  extends CallApi
     private ?array $mensagem;
 
     /**
+     * @param Configuration|null $configuration
      * @param string|null $tipoCobranca
      * @param int|null $codigoBeneficiario
      * @param object|null $pagador
@@ -421,7 +422,7 @@ class RegistraBoleto  extends CallApi
      */
     public function consultaBoletoNossoNumero(string $nossoNumero)
     {
-        return $this->call("/cobranca/boleto/v1/boletos?codigoBeneficiario=".SICREDI_CODIGOBENEFICIARIO."&nossoNumero=$nossoNumero", null, 'GET');
+        return $this->call("/cobranca/boleto/v1/boletos?codigoBeneficiario=".$this->keys['codigoBeneficiario']."&nossoNumero=$nossoNumero", null, 'GET');
     }
 
     public function to_array(): array
