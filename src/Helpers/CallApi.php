@@ -53,27 +53,17 @@ class CallApi
     public function call(string $endpoint, ?array $body = NULL, ?string $method = 'POST')
     {
         $token = $this->accessToken();
-
         $client = new Client();
-        if (isset($body)) {
-            $options = array_filter([
-                'headers' => [
-                    'x-api-key' => $this->keys['x-api-key'],
-                    'Authorization' => "{$token->token_type} {$token->access_token}",
-                    'Content-Type' => 'application/json',
-                    'cooperativa' => $this->keys['cooperativa'],
-                    'posto' => $this->keys['posto'],
-                ],
-                'json' => $body
-            ]);
-        } else {
-            $options = array_filter([
-                'headers' => [
-                    'x-api-key' => $this->keys['x-api-key'],
-                    'Authorization' => "{$token->token_type} {$token->access_token}",
-                ]
-            ]);
-        }
+        $options = array_filter([
+            'headers' => [
+                'x-api-key' => $this->keys['x-api-key'],
+                'Authorization' => "{$token->token_type} {$token->access_token}",
+                'Content-Type' => 'application/json',
+                'cooperativa' => $this->keys['cooperativa'],
+                'posto' => $this->keys['posto'],
+            ],
+            'json' => $body
+        ]);
         $res = $client->request($method, "{$this->config->getUrl()}{$endpoint}", $options);
 
         if (isset($body)) {

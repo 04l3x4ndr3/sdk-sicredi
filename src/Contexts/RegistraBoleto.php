@@ -2,6 +2,7 @@
 
 namespace O4l3x4ndr3\SdkSicredi\Contexts;
 
+use GuzzleHttp\Exception\GuzzleException;
 use O4l3x4ndr3\SdkSicredi\Configuration;
 use O4l3x4ndr3\SdkSicredi\Helpers\CallApi;
 use O4l3x4ndr3\SdkSicredi\Types\BeneficiarioFinal;
@@ -399,14 +400,28 @@ class RegistraBoleto  extends CallApi
         return $this;
     }
 
+    /**
+     * @throws GuzzleException
+     */
     public function registraBoleto()
     {
         return $this->call("/cobranca/boleto/v1/boletos", $this->to_array());
     }
 
+    /**
+     * @throws GuzzleException
+     */
     public function imprimeBoleto(string $linhaDigitavel)
     {
         return $this->call("/cobranca/boleto/v1/boletos/pdf?linhaDigitavel={$linhaDigitavel}", null, 'GET');
+    }
+
+    /**
+     * @throws GuzzleException
+     */
+    public function consultaBoletoNossoNumero(string $nossoNumero)
+    {
+        return $this->call("/cobranca/boleto/v1/boletos?codigoBeneficiario=".$this->keys['codigoBeneficiario']."&nossoNumero=$nossoNumero", null, 'GET');
     }
 
     public function to_array(): array
